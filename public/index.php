@@ -14,21 +14,25 @@ define('HELPERS', ROOT . 'app' . DIRECTORY_SEPARATOR . 'helpers' . DIRECTORY_SEP
 define('LIB', ROOT . 'app' . DIRECTORY_SEPARATOR . 'lib' . DIRECTORY_SEPARATOR);
 define('CONTENT', ROOT . 'public' . DIRECTORY_SEPARATOR . 'content' . DIRECTORY_SEPARATOR);
 
-
-
 require_once(CORE . 'Core.php');
 
 $core = new Core;
 #$core->sql->init_db();
 #$core->sql->seed_database();
-#$core->sql->SetMovieAsViewed(3);
-#var_dump(password_hash('1234', PASSWORD_DEFAULT));
+
 
 $modules = [ROOT, APP, CORE, CONTROLLER, DATA, MODEL, HELPERS, LIB, CONTENT];
 
 set_include_path(get_include_path() . PATH_SEPARATOR . implode(PATH_SEPARATOR, $modules));
 
-spl_autoload_register('spl_autoload', false);
+error_reporting(E_ALL);
+ini_set('display_errors','on');
+
+
+function autoCapital($class){
+	include $class.'.php';
+}
+spl_autoload_register('autoCapital', false);
 
 $App = new Application;
 
