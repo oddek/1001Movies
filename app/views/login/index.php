@@ -150,7 +150,7 @@
                 <br>
                 <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit">Sign in</button>
               </form>
-              <form action="/login/register">
+              <form action="/login/register" method="get">
                 <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit">Register</button>
               </form>
                 <div class="text-center">
