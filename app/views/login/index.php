@@ -150,9 +150,9 @@
                 <br>
                 <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit">Sign in</button>
               </form>
-              <form action="/login/register" method="get">
+              <a href="/login/register">
                 <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit">Register</button>
-              </form>
+              </a>
                 <div class="text-center">
                   <a class="small" href="/login/forgotPassword">Forgot password?</a></div>
             </div>
