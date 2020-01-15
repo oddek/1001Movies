@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UFT-8">
+	<meta charset="UTF-8">
 	<title><?php echo (isset($this->page_title) ? $this->page_title : ''); ?></title>
 
 	<link rel="stylesheet" href="/content/css/style.css" type="text/css">

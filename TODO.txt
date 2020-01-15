@@ -7,3 +7,5 @@ Legg til leaderboard side.
 Legg til min-profil side
 
 Endre innlogging
+
+Fikse utf8 på databasen
