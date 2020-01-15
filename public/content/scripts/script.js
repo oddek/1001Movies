@@ -87,10 +87,6 @@ $(document).ready(function(){
     });
   });
 
-
-
-
-
   //FILTER!!
   $('#filterDiv').on("change keyup", function() {
     chkBox2 = { datatest: null };
@@ -158,4 +154,21 @@ $(document).ready(function(){
     }).show();
   });
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 });
+
+
+
