@@ -113,7 +113,15 @@ class Movie extends Model
 
 				$this->yearTag = "year2";
 			}
-			else if ($this->year < 1940) 
+			else if($this->year >= 2000)
+			{
+				$this->yearTag = "year1" . substr($this->year, 2, 1);
+			}
+			else
+			{
+				$this->yearTag = "year" . substr($this->year, 2, 1);
+			}
+			/*else if ($this->year < 1940) 
 			{
 				$this->yearTag = "year3";
 			}
@@ -148,7 +156,7 @@ class Movie extends Model
 			else 
 			{
 				$this->yearTag = "year11";
-			}
+			}*/
 
 
 		}
