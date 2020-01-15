@@ -14,6 +14,7 @@ class MovieRepository extends Model
 		FROM Movies mov
 		LEFT JOIN UserMovie usrmov ON mov.Id = usrmov.MovieId
 		AND usrmov.UserId = $user->Id
+		ORDER BY mov.Year ASC
 		";
 
 		$res = self::$core->sql->custom_query($query);
