@@ -16,7 +16,14 @@ class Sql
     	}
 		if($this->conn->connect_error)
 		{
-			die("Connection failed: " . $conn->connect_error);
+			die("Connection failed: " . $this->conn->connect_error);
+		}
+		/* change character set to utf8 */
+		if (!$this->conn->set_charset("utf8")) {
+    		printf("Error loading character set utf8: %s\n", $this->conn->error);
+    		exit();
+		} else {
+    		printf("Current character set: %s\n", $this->conn->character_set_name());
 		}
 	}
 
