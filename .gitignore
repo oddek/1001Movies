@@ -1,2 +1,3 @@
 #ignore:
 app/core/config.php
+/log/*
