@@ -88,7 +88,7 @@
           data-year11="'.(($movie->yearTag === 'year11') ? '1' : '0') .'"
           data-name="'.$movie->title.'">
           <div class="card h-100">
-            <a href="/home/movie/' . $movie->id.'"><img class="card-img-top lazy" data-src="/content/img/' . $movie->posterUrl . '?tr=w-400,h-300" alt=""></a>
+            <a href="/home/movie/' . $movie->id.'"><img class="card-img-top lazy" data-src="/content/img/' . $movie->posterUrl . '" alt=""></a>
             <div class="card-body d-flex flex-column">
               <h6 class="card-title">
                 <a href="/home/movie/' . $movie->id.'">' . $movie->title . '</a><div class="text-muted">' . $movie->year . '
@@ -120,6 +120,7 @@
 <script>
     //LAZY LOADING IMAGES:
     //Uten denne så prøver nettleseren å laste inn alle postere samtidig.
+    //Kopiert herfra: https://imagekit.io/blog/lazy-loading-images-complete-guide/
 document.addEventListener("DOMContentLoaded", function() {
   var lazyloadImages;    
 
@@ -129,7 +130,6 @@ document.addEventListener("DOMContentLoaded", function() {
       entries.forEach(function(entry) {
         if (entry.isIntersecting) {
           var image = entry.target;
-          console.log("ER HER!")
           image.src = image.dataset.src;
           image.classList.remove("lazy");
           imageObserver.unobserve(image);
