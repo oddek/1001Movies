@@ -1,6 +1,7 @@
 <?php
 require('Parser.php');
-
+//Heart of the application.
+//Provides a seed method. A method for initializing the db. And methods for reading and writing data to the db. Some of the methods are very specific, whilst others are more general.
 class Sql
 {
 	protected $conn;

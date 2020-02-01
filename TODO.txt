@@ -1,7 +1,5 @@
 TODO:
 
-Sørg for at filmer er sortert på år.
-
 Legg til leaderboard side.
 
 Legg til min-profil side

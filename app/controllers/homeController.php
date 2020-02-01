@@ -2,7 +2,7 @@
 
 class homeController extends Controller
 {
-
+	//The HomePage
 	public function index($id = '', $name= '')
 	{
 		$this->view('home' . DIRECTORY_SEPARATOR . 'index', 
@@ -14,7 +14,7 @@ class homeController extends Controller
 		$this->view->render();
 	}
 
-
+	//About Page
 	public function aboutUs($id = '', $name= '')
 	{
 		$this->view('home' . DIRECTORY_SEPARATOR . 'aboutUs', 
@@ -26,6 +26,7 @@ class homeController extends Controller
 		$this->view->render();
 	}
 
+	//Progress Page
 	public function progress($id = '', $name= '')
 	{
 		$this->model('Progress');
@@ -34,6 +35,7 @@ class homeController extends Controller
 		$this->view->render();
 	}
 
+	//Profile Page: Not implemented yet
 	public function profile($id = '', $name= '')
 	{
 		$this->view('home' . DIRECTORY_SEPARATOR . 'profile', 
@@ -45,6 +47,7 @@ class homeController extends Controller
 		$this->view->render();
 	}
 
+	//Show all movies page
 	public function movies($id = '', $name='')
 	{
 		/*$this->view('home' . DIRECTORY_SEPARATOR . 'movies', 
@@ -58,6 +61,7 @@ class homeController extends Controller
 		$this->view->render();
 	}
 
+	//Show one movie page
 	public function movie($id='', $name='')
 	{
 		$this->model = Movie::withId($id);

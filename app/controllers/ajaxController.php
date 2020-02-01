@@ -1,7 +1,8 @@
 <?php 
-
+//Class for handling all the AJAX-calls.
 class ajaxController extends Controller
 {
+  //Toggles wether a user has seen a movie or not
 	public function post_toggleSeen($id='', $name='')
 	{
 		if (isset($_POST['id']) && isset($_POST['status'])) 
@@ -19,7 +20,7 @@ class ajaxController extends Controller
   			}
   		}
 	}
-
+  //Sets rating
   public function post_giveRating($id='', $name='')
   {
     if(isset($_POST['id']) && isset($_POST['rating']))
@@ -31,6 +32,7 @@ class ajaxController extends Controller
     }
   }
 
+  //submit comment. Returns the comment in proper format, so that jquery can append the new post dynamically
   public function post_submitComment($id='', $name='')
   {
     if(isset($_POST['id']) && isset($_POST['content']))
@@ -83,7 +85,7 @@ class ajaxController extends Controller
 
   }
   
-
+  //DeletePost
   public function post_deleteComment($id='', $name='')
   {
     if(isset($_POST['id']))

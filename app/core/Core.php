@@ -1,4 +1,5 @@
 <?php
+//A perhaps superflous class, which holds the instance of the Sql class.
 require('Sql.php');
 class Core
 {

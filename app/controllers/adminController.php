@@ -2,20 +2,6 @@
 
 class adminController extends Controller
 {
-
-	public function index($id = '', $name= '')
-	{
-
-		$this->view('admin' . DIRECTORY_SEPARATOR . 'index', 
-		[
-			'name' => $name,
-			'id' => $id
-		]);
-		$this->view->page_title = 'Home';
-		$this->view->render();
-	}
-
-
 	public function viewUsers($name= '')
 	{
 		$this->model('UserRepository');

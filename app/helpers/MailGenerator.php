@@ -1,4 +1,5 @@
 <?php
+//This is a mailLibrary found at github
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
@@ -7,15 +8,16 @@ require LIB . DIRECTORY_SEPARATOR .  'PHPMailer/src/PHPMailer.php';
 require LIB . DIRECTORY_SEPARATOR .  'PHPMailer/src/SMTP.php';
 class MailGenerator
 {
+	private $configs;
 	private static $senderAddress = 'odde.adm@gmail.com';
 	private static $senderName = 'ExamAdmin';
-	private static $password = '7Gaifay7';
 	private static $host = 'smtp.gmail.com';
 	private static $originURL = 'localhost';
 
 
 	public static function resetPassword($user, $token)
 	{
+		$this->configs = include('config.php');
 		$mail = new PHPMailer(true);
 
 	try {
@@ -26,7 +28,7 @@ class MailGenerator
 	    $mail->Host       = self::$host;                    // Set the SMTP server to send through
 	    $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
 	    $mail->Username   = self::$senderAddress;                     // SMTP username
-	    $mail->Password   = self::$password;                               // SMTP password
+	    $mail->Password   = $this->configs['mailPassword'];;                               // SMTP password
 	    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` also accepted
 	    $mail->Port       = 587;                                    // TCP port to connect to
 

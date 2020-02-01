@@ -1,8 +1,7 @@
 <?php
 
 
-//$core = new Core;
-
+//Main routing class which takes the URL and calls the proper controller and actionmethod
 class Application
 {
 	protected $controller = 'homeController';
@@ -46,27 +45,6 @@ class Application
 				header("Location: /login/index");
 			}
 		}
-
-		
-
-	}
-
-	public function getHead($title)
-	{
-		include(VIEW . 'head.php');
-		echo "<title>$title - 1001</title>";
-	}
-
-	public function getHeader()
-	{
-		include(VIEW . 'header.php');
-	}
-
-	public function getFooter()
-	{
-		include(VIEW . 'footer.php');
 	}
 }
-
-
 ?>

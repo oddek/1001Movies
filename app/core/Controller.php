@@ -1,5 +1,6 @@
 <?php
-
+//Controller Base Class.
+//All other controllers inherit from this one.
 class Controller
 {
 	protected $core;

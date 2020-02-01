@@ -1,5 +1,5 @@
 <?php
-
+//Baseclass for all views.
 class View
 {
 	protected $view_file;

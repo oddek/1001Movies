@@ -74,7 +74,7 @@
       {
         echo('
 
-         <div class="col-lg-3 col-md-4 col-sm-6 mb-4 movieCard" 
+         <div class="col-lg-3 col-md-4 col-sm-6 mb-4 movieCard lazy" 
           data-seen="'.(($movie->viewed) ? '1' : '0') .'"
           data-year2="'.(($movie->yearTag === 'year2') ? '1' : '0') .'"
           data-year3="'.(($movie->yearTag === 'year3') ? '1' : '0') .'"

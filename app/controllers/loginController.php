@@ -3,7 +3,7 @@
 class loginController extends Controller
 {
 
-	#GET
+	#GET LoginPage
 	public function index($id = '', $name= '')
 	{
 		$this->view('login' . DIRECTORY_SEPARATOR . 'index', 
@@ -14,7 +14,7 @@ class loginController extends Controller
 		$this->view->page_title = 'index';
 		$this->view->render();
 	}
-	#POST
+	#POST for loginpage. Redirects to homepage and gives user a cookie if successful
 	public function post_index($id = '', $name='')
 	{
 		$username = $_POST['username'];
@@ -56,14 +56,14 @@ class loginController extends Controller
 		$this->view->page_title = 'index';
 		$this->view->render();
 	}
-
+	//Logout function. Deletes cookie and redirects to loginpage
 	public function logout($id = '', $name='')
 	{
 		unset($_SESSION['UID']);
 		session_destroy();
 		header("location: /login/index");
 	}
-
+	//GET registerpage
 	public function register($id='', $name='')
 	{
 		$this->view('login' . DIRECTORY_SEPARATOR . 'register', 
@@ -74,7 +74,7 @@ class loginController extends Controller
 		$this->view->page_title = 'Register';
 		$this->view->render();
 	}
-
+	//POST Registerpage
 	public function post_register($id='', $name='')
 	{
 		$firstName = $_POST['FirstName'];
@@ -110,7 +110,7 @@ class loginController extends Controller
 		}
 		header("location: /login/register");
 	}
-
+	//GET forgotpasswordpage
 	public function forgotPassword($id ='', $name='')
 	{
 		$this->view('login' . DIRECTORY_SEPARATOR . 'forgotPassword', 
@@ -122,7 +122,7 @@ class loginController extends Controller
 		$this->view->render();
 	}
 
-	#Legg til logikk for å sende ut mail, og returner til index ved funnet. Gi feilmelding ved ikke funnet!
+	#POST for forgotPassword
 	public function post_forgotPassword($id ='', $name='')
 	{
 		$email = $_POST['email'];
@@ -158,7 +158,7 @@ class loginController extends Controller
 		}
 		header("location: /login/forgotPassword");
 	}
-
+	//GEt for resetpassword
 	public function resetPassword ($id ='', $name='')
 	{
 		//Finner token
@@ -182,7 +182,7 @@ class loginController extends Controller
 		$this->view->page_title = 'Reset Password';
 		$this->view->render();
 	}
-
+	//Post for resetPassword
 	public function post_resetPassword($id='', $name='')
 	{
 		$password = $_POST['password'];

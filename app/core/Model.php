@@ -1,5 +1,5 @@
 <?php
-
+//Model base class. Not really necessery for anything else than holding an instance of Core class.
 class Model
 {
 	

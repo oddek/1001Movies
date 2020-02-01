@@ -1,5 +1,6 @@
 <?php
-
+	//Parser class used by seed method in Sql class.
+	//Scrapes the OMDB API and returns the results as an array.
 	class Parser
 	{
 		private $configs;
