@@ -1,5 +1,6 @@
 <?php
-
+//This is very bad code!!!
+//But i had to prototype a solution to get the filtering system to work, and i cant be bothered to fix it.
 class Progress extends Model
 {
 	public $total = 0;

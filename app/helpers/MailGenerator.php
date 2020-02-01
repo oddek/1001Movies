@@ -1,5 +1,6 @@
 <?php
 //This is a mailLibrary found at github
+//https://raw.github.com/PHPMailer/PHPMailer/
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 

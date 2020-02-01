@@ -1,5 +1,4 @@
 <?php
-
 class Movie extends Model
 {
 	public 
@@ -25,9 +24,6 @@ class Movie extends Model
 
 	public $posts = array();
 	
-	#$viewDate,
-	
-
 	public function __construct()
 	{
 		parent::__construct();

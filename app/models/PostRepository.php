@@ -1,6 +1,5 @@
 <?php
-
-
+//Holds all posts
 class PostRepository extends Model
 {
 	public $posts = array();

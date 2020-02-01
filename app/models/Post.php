@@ -1,6 +1,5 @@
 <?php
 
-
 class Post extends Model
 {
 	public

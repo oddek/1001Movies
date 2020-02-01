@@ -1,5 +1,5 @@
 <?php
-
+//Holds all movies.
 class MovieRepository extends Model
 {
 	public $movies = array();
