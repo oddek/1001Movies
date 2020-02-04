@@ -1,4 +1,31 @@
 $(document).ready(function(){
+
+
+  //DELETE USER
+  $(document).on('click', '.deleteUserButton', function(){
+
+    var id = ($(this).attr("name"));
+    var name = ($(this).attr("user"));
+    console.log(id);
+    console.log(name);
+    if (confirm("Really delete " + name)) {
+      $.ajax({
+      url: '/ajax/deleteUser',
+      type: 'POST', 
+      data: {
+        'id': id,
+      },
+      success: function(response){
+        console.log(name + "er fjernet");
+        $("#user-"+id).remove();
+
+      }
+      });
+    }
+
+    
+  });
+
   //SEEN MOVIE
   $(document).on('click', '#seenCheckBox', function(){
 

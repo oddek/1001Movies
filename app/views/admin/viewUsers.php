@@ -17,7 +17,7 @@
     <?php
     foreach ($this->view_data as $user)
     {
-    	echo('<tr>
+    	echo('<tr id="user-'. $user->Id .'">
         <td>' . $user->FirstName . '</td>
         <td>' . $user->LastName . '</td>
         <td>' . $user->Email . '</td>
@@ -26,7 +26,7 @@
        	'<span class="badge badge-danger">User</span>')
          . '</td>
          <td>
-          <button type="button" class="btn btn-outline-danger btn-sm" onclick="#">Delete</button></a>
+          <button type="button" name="'. $user->Id .'" user="'.$user->FirstName .' '. $user->LastName .'" class="btn btn-outline-danger btn-sm deleteUserButton">Delete</button></a>
          </td>
       </tr>');
     }
@@ -37,3 +37,4 @@
 <?php 
  ?>
 <?php include VIEW . 'footer.php';?>
+<script src="/content/scripts/script.js"></script>

@@ -95,4 +95,14 @@ class ajaxController extends Controller
       $this->core->sql->delete_row_where('posts', 'Id', $postId);
     }
   }
+
+  public function post_deleteUser($id='', $name='')
+  {
+    if(isset($_POST['id']))
+    {
+      $userId = $_POST['id'];
+
+      $this->core->sql->delete_user($userId);
+    }
+  }
 }

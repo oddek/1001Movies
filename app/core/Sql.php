@@ -113,6 +113,20 @@ class Sql
 		return mysqli_query($this->conn, $query);
 	}
 
+	public function delete_user($userId)
+	{
+		//Delete posts
+		$query = "DELETE FROM Posts WHERE UserId = $userId";
+		mysqli_query($this->conn, $query);
+
+		//Delete ratings:
+		$query = "DELETE FROM UserMovie WHERE UserId = $userId";
+		mysqli_query($this->conn, $query);
+
+		$query = "DELETE FROM Users WHERE Id = $userId";
+		var_dump(mysqli_query($this->conn, $query));
+	}
+
 	public function select_all($table)
 	{
 		$query = "SELECT * FROM $table";
