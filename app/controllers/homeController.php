@@ -1,5 +1,4 @@
 <?php
-
 class homeController extends Controller
 {
 	//The HomePage

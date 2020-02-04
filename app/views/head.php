@@ -22,12 +22,9 @@
 <body>
 
 	<?php
-
 	$h = "1";
 	$hm = $h * 60;
 	$ms = $hm * 60;
-
-
 
 	$message;
 	if(isset($_SESSION['message']))

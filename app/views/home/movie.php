@@ -6,7 +6,6 @@
      $neutralUrl = "content/img/neutral.svg";
      $sadUrl = "content/img/sad.svg";
 ?>
-
 <style>
 	#comment{
 margin-left: 20px;
@@ -31,8 +30,6 @@ border-radius: 5px;
 #commentSubmit:hover {
 background-color: #09466f;
 }
-
-
 
 form#smileys input[type="radio"] {
   -webkit-appearance: none;
@@ -105,16 +102,11 @@ form#smileys input[type="radio"].sad {
   height: 25px !important;
   padding:2px;
 }
-
-
 </style>
-
-
 
 <h1 class="my-4"><?php echo($movie->title) ?>
     <small>[<?php echo($movie->year)?>]</small>
   </h1>
-
 
 <div class="card mb-3" style="max-width: 100%;">
   <div class="row no-gutters">
@@ -140,7 +132,7 @@ form#smileys input[type="radio"].sad {
             <br>
             <small class="text-muted">Genre: <?php echo($movie->genres) ?></small>
             <br>
-            <small class="text-muted">Country: <?php echo($movie->language) ?></small>
+            <small class="text-muted">Country: <?php echo($movie->country) ?></small>
             <br>
             <small class="text-muted">Language: <?php echo($movie->language) ?></small>
             <br>
@@ -200,11 +192,6 @@ form#smileys input[type="radio"].sad {
   </div>
 </div>
 <br>
-
-<?php #var_dump($movie->posts);
-    
- ?>
-
 
 <!--COMMENTSECTION-->
 <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
@@ -274,24 +261,6 @@ form#smileys input[type="radio"].sad {
 
 </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <?php include VIEW . 'footer.php';?>
-
 
 <script src="/content/scripts/script.js"></script>

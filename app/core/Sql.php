@@ -1,6 +1,5 @@
 <?php
 require('Parser.php');
-//Heart of the application.
 //Provides a seed method. A method for initializing the db. And methods for reading and writing data to the db. Some of the methods are very specific, whilst others are more general.
 class Sql
 {
@@ -154,10 +153,6 @@ class Sql
 		$results = mysqli_query($this->conn, $query);
 	}
 
-
-
-
-
 	public function seed_database()
 	{
 		$hash = password_hash('1234', PASSWORD_DEFAULT);
@@ -165,50 +160,44 @@ class Sql
 
 		$this->custom_query("INSERT INTO Users(Id, FirstName, LastName, Email, Password, IsAdmin) VALUES(2, 'Kristine', 'Enga', 'k.enga@ebnett.no', '$hash', 0)");
 
-				/*SEED MOVIES*/
-				$parser = new Parser;
-				$movies = $parser->getAllMovies();
+		/*SEED MOVIES*/
+		$parser = new Parser;
+		$movies = $parser->getAllMovies();
 
-				foreach($movies as $movie)
-				{
-					$title = $movie->Title;
-					$year = $movie->{'Year'};
-					$runtime = $movie->{'Runtime'};
-					$imdbRating = $movie->{'imdbRating'};
-					$imdbId = $movie->{'imdbID'};
-					$directors = $movie->{'Director'};
-					$actors = $movie->{'Actors'};
-					$writers = $movie->{'Writer'};
-					$genres = $movie->{'Genre'};
-					$language = $movie->{'Language'};
-					$country = $movie->{'Country'};
-					$rated = $movie->{'Rated'};
-					$plot = $movie->{'Plot'};
-					$posterUrl = $movie->{'Poster'};
+		foreach($movies as $movie)
+		{
+			$title = $movie->Title;
+			$year = $movie->{'Year'};
+			$runtime = $movie->{'Runtime'};
+			$imdbRating = $movie->{'imdbRating'};
+			$imdbId = $movie->{'imdbID'};
+			$directors = $movie->{'Director'};
+			$actors = $movie->{'Actors'};
+			$writers = $movie->{'Writer'};
+			$genres = $movie->{'Genre'};
+			$language = $movie->{'Language'};
+			$country = $movie->{'Country'};
+			$rated = $movie->{'Rated'};
+			$plot = $movie->{'Plot'};
+			$posterUrl = $movie->{'Poster'};
 
-					$this->SaveImageToPosterFolder($posterUrl, $imdbId);
-					$localUrl = "posters" . DIRECTORY_SEPARATOR . $imdbId . ".jpg";
+			$this->SaveImageToPosterFolder($posterUrl, $imdbId);
+			$localUrl = "posters" . DIRECTORY_SEPARATOR . $imdbId . ".jpg";
 
-					
-					if(!$stmt = $this->conn->prepare("INSERT INTO Movies(Title, Year, Runtime, ImdbRating, ImdbId, Director, Actors, Writers, Genres, Language, Country, Rated, Plot, PosterUrl) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"))
-					{
-						echo "Prepare failed: (" . $this->conn->errno . ") " . $this->conn->error;
-					}
-					if(!$stmt->bind_param("siidssssssssss", $title, $year, $runtime, $imdbRating, $imdbId, $directors, $actors, $writers, $genres, $language, $country, $rated, $plot, $localUrl))
-					{
-						echo "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
-					}
-					if(!$stmt->execute())
-					{
-						echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
-					}
-				}
+			if(!$stmt = $this->conn->prepare("INSERT INTO Movies(Title, Year, Runtime, ImdbRating, ImdbId, Director, Actors, Writers, Genres, Language, Country, Rated, Plot, PosterUrl) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"))
+			{
+				echo "Prepare failed: (" . $this->conn->errno . ") " . $this->conn->error;
+			}
+			if(!$stmt->bind_param("siidssssssssss", $title, $year, $runtime, $imdbRating, $imdbId, $directors, $actors, $writers, $genres, $language, $country, $rated, $plot, $localUrl))
+			{
+				echo "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
+			}
+			if(!$stmt->execute())
+			{
+				echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+			}
+		}
 	}
-
-
-
-
-
 
 	public function init_db()
 	{
@@ -287,15 +276,10 @@ class Sql
 				)
 			";
 
-
 		mysqli_query($this->conn, $user_table_query);
 		mysqli_query($this->conn, $reset_password_table_query);
 		mysqli_query($this->conn, $movie_table_query);
 		mysqli_query($this->conn, $user_movie_query);
 		mysqli_query($this->conn, $post_table_query);
-
-
-
 	}
-
 }

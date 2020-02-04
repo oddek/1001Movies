@@ -1,5 +1,4 @@
 <?php
-
 class UserRepository extends Model
 {
 	public $users = array();
@@ -7,15 +6,12 @@ class UserRepository extends Model
 	function __construct()
 	{
 		parent::__construct();
-
-
 		$res = self::$core->sql->select_all('users');
 
 		while ($row = $res->fetch_assoc())
 		{
 			$user = User::withRow($row);
-			array_push($this->users, $user);
-			
+			array_push($this->users, $user);	
 		}
 	}
 

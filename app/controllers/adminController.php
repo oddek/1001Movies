@@ -1,5 +1,4 @@
 <?php
-
 class adminController extends Controller
 {
 	public function viewUsers($name= '')

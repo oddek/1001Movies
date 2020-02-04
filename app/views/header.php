@@ -59,10 +59,6 @@
             ');
         }
         ?>
-      
-
-
-
     </ul>
       <!--PROFILE-->
       <div class ="navbar-nav">
@@ -80,6 +76,5 @@
   </div>
 </div>
 </nav>
-
 
 <div class="container" style= "height:100vh">

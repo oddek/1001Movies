@@ -15,7 +15,6 @@ class Progress extends Model
 	public $year10 = 0;
 	public $year11 = 0;
 
-
 	public function __construct()
 	{
 		parent::__construct();
@@ -70,8 +69,5 @@ class Progress extends Model
 		if($totalyear9 != 0) $this->year9 = $seenyear9 * 100 / $totalyear9;
 		if($totalyear10 != 0) $this->year10 = $seenyear10 * 100 / $totalyear10;
 		if($totalyear11 != 0) $this->year11 = $seenyear11 * 100 / $totalyear11;
-
 	}
-
-
 }

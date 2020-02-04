@@ -22,14 +22,8 @@ class View
 	public function getAction()
 	{
 		$parts = (explode('\\', $this->view_file));
-
-
-
 		if(isset($parts[1])){ return $parts[1];}
-
 		else return '';
 	}
-
 }
-
 ?>

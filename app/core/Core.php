@@ -18,5 +18,4 @@ class Core
 	{
 		return (isset($_SESSION['UID']));
 	}
-
 }

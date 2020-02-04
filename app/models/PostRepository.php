@@ -16,5 +16,4 @@ class PostRepository extends Model
 			array_push($this->posts, $post);
 		}
 	}
-
 }

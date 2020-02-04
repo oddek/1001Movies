@@ -4,13 +4,11 @@
 	 $progress = $this->view_data;
 ?>
 
-
 <div class="container">
 
 	<h1 class="my-4">Your Progress
 
   </h1>
-
     <h4>Total:</h4>
     <div class="container"> 
         <div class="progress"> 
@@ -117,20 +115,4 @@
 <br>
 
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <?php include VIEW . 'footer.php';?>

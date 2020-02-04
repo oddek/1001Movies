@@ -38,11 +38,8 @@ class Post extends Model
 		{
 			$instance->rating = 0;
 		}
-		
-
 		return $instance;
 	}
-
 
 	public function fill($row)
 	{

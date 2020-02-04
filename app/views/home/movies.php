@@ -1,10 +1,6 @@
 <?php
   include VIEW . 'head.php';
   include VIEW . 'header.php';
-
-
-
-
   ?>
 
 <style>
@@ -115,7 +111,6 @@
 <?php include VIEW . 'footer.php';?>
 
 <script src="/content/scripts/script.js"></script>
-
 
 <script>
     //LAZY LOADING IMAGES:

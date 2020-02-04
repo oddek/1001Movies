@@ -1,4 +1,5 @@
 <?php
+//Sets timezone and inits session.
 date_default_timezone_set("Europe/Oslo");
 session_start();
 
@@ -21,9 +22,7 @@ $core = new Core;
 //Only needed first time: 
 #$core->sql->init_db();
 #$core->sql->seed_database();
-
 $modules = [ROOT, APP, CORE, CONTROLLER, DATA, MODEL, HELPERS, LIB, CONTENT];
-
 set_include_path(get_include_path() . PATH_SEPARATOR . implode(PATH_SEPARATOR, $modules));
 
 error_reporting(E_ALL);
@@ -36,18 +35,4 @@ function autoCapital($class){
 spl_autoload_register('autoCapital', false);
 //Creates application instance, which handles routing of the request.
 $App = new Application;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ?>

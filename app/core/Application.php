@@ -1,6 +1,4 @@
 <?php
-
-
 //Main routing class which takes the URL and calls the proper controller and actionmethod
 class Application
 {

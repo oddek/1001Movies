@@ -1,5 +1,4 @@
 <?php
-
 class loginController extends Controller
 {
 
@@ -99,8 +98,6 @@ class loginController extends Controller
   				An error has occured!
 				</div>';
 			}
-			
-			
 		}
 		else
 		{

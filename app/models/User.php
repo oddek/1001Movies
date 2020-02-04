@@ -1,5 +1,4 @@
 <?php
-
 class User extends Model
 {
 	public 
@@ -9,7 +8,6 @@ class User extends Model
 	$Email,
 	$Password,
 	$IsAdmin;
-
 
 	function __construct()
 	{
@@ -26,10 +24,8 @@ class User extends Model
 	public static function withId($Id)
 	{
 		$instance = new self();
-
 		$res = $instance::$core->sql->select_specified("users", "Id", $Id);
 		$row = $res->fetch_assoc();
-
 		$instance->fill($row);
 		return $instance;
 	}
@@ -43,15 +39,12 @@ class User extends Model
 
 		if($res && $res->num_rows != 0)
 		{
-
 			$row = $res->fetch_assoc();
 			$instance->fill($row);
 			return $instance;
 		}
 		return null;
 	}
-
-
 
 	public function fill($row)
 	{
@@ -66,7 +59,4 @@ class User extends Model
 		}
 		
 	}
-
-
-
 }

@@ -2,10 +2,7 @@
 	 include VIEW . 'head.php';
 	 include VIEW . 'header.php';
 ?>
-
 <h1 class="my-4">Users</h1>
-
-
 <table class="table table-bordered">
     <thead>
       <tr>
@@ -36,11 +33,7 @@
     ?>
     </tbody>
   </table>
-
 </div>
-
 <?php 
-
  ?>
-
 <?php include VIEW . 'footer.php';?>
