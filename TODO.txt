@@ -1,7 +1,6 @@
 TODO:
+	Legg til leaderboard side.
 
-Legg til leaderboard side.
+	Legg til min-profil side
 
-Legg til min-profil side
-
-Endre innlogging
+	Endre innlogging
