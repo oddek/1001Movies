@@ -10,7 +10,7 @@ class Sql
 		$configs = include('config.php');
 		$this->conn = new mysqli($configs['dbServername'], $configs['dbUsername'], $configs['dbPassword'], $configs['dbName']);
 
-		if (!$this->conn) 
+		if (!$this->conn)
 		{
     		die('Connect Error (' . mysqli_connect_errno() . ') ' . mysqli_connect_error());
     	}
@@ -27,7 +27,7 @@ class Sql
 
 	public function addUser($firstName, $lastName, $email, $hash)
 	{
-		if(!$stmt = $this->conn->prepare("INSERT INTO Users(FirstName, LastName, Email, Password) VALUES(?, ?, ?, ?)"))
+		if(!$stmt = $this->conn->prepare("INSERT INTO users(FirstName, LastName, Email, Password) VALUES(?, ?, ?, ?)"))
 		{
 			//echo "Prepare failed: (" . $this->conn->errno . ") " . $this->conn->error;
 			return false;
@@ -49,7 +49,7 @@ class Sql
 	{
 		$userId = $_SESSION['UID'];
 
-		$query = "INSERT INTO UserMovie(UserId, MovieId, Viewed, PersonalRating) VALUES ($userId, $movieId, 1, $rating) ON DUPLICATE KEY UPDATE PersonalRating = $rating";
+		$query = "INSERT INTO usermovie(UserId, MovieId, Viewed, PersonalRating) VALUES ($userId, $movieId, 1, $rating) ON DUPLICATE KEY UPDATE PersonalRating = $rating";
 		//var_dump($query);
 		$results = mysqli_query($this->conn, $query);
 
@@ -58,7 +58,7 @@ class Sql
 	public function SetMovieAsNotViewed($movieId)
 	{
 		$userId = $_SESSION['UID'];
-		$query = "DELETE FROM userMovie WHERE UserId = '$userId' AND MovieId = '$movieId'";
+		$query = "DELETE FROM usermovie WHERE UserId = '$userId' AND MovieId = '$movieId'";
 		//var_dump($query);
 		$results = mysqli_query($this->conn, $query);
 	}
@@ -86,7 +86,7 @@ class Sql
 
 	public function get_users_count_seen_movie($movieId)
 	{
-		$query = "SELECT COUNT(DISTINCT UserId) AS cnt FROM UserMovie WHERE MovieId = '$movieId'";
+		$query = "SELECT COUNT(DISTINCT UserId) AS cnt FROM usermovie WHERE MovieId = '$movieId'";
 		$results = mysqli_query($this->conn, $query);
 		$row = $results->fetch_assoc();
 		return "{$row['cnt']}";
@@ -94,7 +94,7 @@ class Sql
 
 	public function get_users_count()
 	{
-		$query = "SELECT COUNT(DISTINCT Id) AS cnt FROM Users";
+		$query = "SELECT COUNT(DISTINCT Id) AS cnt FROM users";
 		$results = mysqli_query($this->conn, $query);
 		$row = $results->fetch_assoc();
 		return "{$row['cnt']}";
@@ -102,7 +102,7 @@ class Sql
 
 	public function get_count_of_table_where($table, $column, $data)
 	{
-		$query = "SELECT COUNT(DISTINCT MovieId) AS cnt FROM UserMovie WHERE $column = '$data'";
+		$query = "SELECT COUNT(DISTINCT MovieId) AS cnt FROM usermovie WHERE $column = '$data'";
 		$results = mysqli_query($this->conn, $query);
 		$row = $results->fetch_assoc();
 		return "{$row['cnt']}";
@@ -116,14 +116,14 @@ class Sql
 	public function delete_user($userId)
 	{
 		//Delete posts
-		$query = "DELETE FROM Posts WHERE UserId = $userId";
+		$query = "DELETE FROM posts WHERE UserId = $userId";
 		mysqli_query($this->conn, $query);
 
 		//Delete ratings:
-		$query = "DELETE FROM UserMovie WHERE UserId = $userId";
+		$query = "DELETE FROM usermovie WHERE UserId = $userId";
 		mysqli_query($this->conn, $query);
 
-		$query = "DELETE FROM Users WHERE Id = $userId";
+		$query = "DELETE FROM users WHERE Id = $userId";
 		var_dump(mysqli_query($this->conn, $query));
 	}
 
@@ -163,16 +163,16 @@ class Sql
 	{
 		$userId = $_SESSION['UID'];
 
-		$query = "INSERT INTO Posts(UserId, MovieId, Content) VALUES ('$userId', '$movieId', '$content')";
+		$query = "INSERT INTO posts(UserId, MovieId, Content) VALUES ('$userId', '$movieId', '$content')";
 		$results = mysqli_query($this->conn, $query);
 	}
 
 	public function seed_database()
 	{
 		$hash = password_hash('1234', PASSWORD_DEFAULT);
-		$this->custom_query("INSERT INTO Users(Id, FirstName, LastName, Email, Password, IsAdmin) VALUES(1, 'Kent', 'Odde', 'kentodde89@gmail.com', '$hash', 1)");
+		$this->custom_query("INSERT INTO users(Id, FirstName, LastName, Email, Password, IsAdmin) VALUES(1, 'Kent', 'Odde', 'kentodde89@gmail.com', '$hash', 1)");
 
-		$this->custom_query("INSERT INTO Users(Id, FirstName, LastName, Email, Password, IsAdmin) VALUES(2, 'Kristine', 'Enga', 'k.enga@ebnett.no', '$hash', 0)");
+		$this->custom_query("INSERT INTO users(Id, FirstName, LastName, Email, Password, IsAdmin) VALUES(2, 'Kristine', 'Enga', 'k.enga@ebnett.no', '$hash', 0)");
 
 		/*SEED MOVIES*/
 		$parser = new Parser;
@@ -198,7 +198,7 @@ class Sql
 			$this->SaveImageToPosterFolder($posterUrl, $imdbId);
 			$localUrl = "posters" . DIRECTORY_SEPARATOR . $imdbId . ".jpg";
 
-			if(!$stmt = $this->conn->prepare("INSERT INTO Movies(Title, Year, Runtime, ImdbRating, ImdbId, Director, Actors, Writers, Genres, Language, Country, Rated, Plot, PosterUrl) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"))
+			if(!$stmt = $this->conn->prepare("INSERT INTO movies(Title, Year, Runtime, ImdbRating, ImdbId, Director, Actors, Writers, Genres, Language, Country, Rated, Plot, PosterUrl) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"))
 			{
 				echo "Prepare failed: (" . $this->conn->errno . ") " . $this->conn->error;
 			}
@@ -215,9 +215,9 @@ class Sql
 
 	public function init_db()
 	{
-	 	$user_table_query = 
+	 	$user_table_query =
 		"
-			CREATE TABLE IF NOT EXISTS Users 
+			CREATE TABLE IF NOT EXISTS users
 			(
 			Id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 			FirstName VARCHAR(50) NOT NULL,
@@ -228,20 +228,20 @@ class Sql
 			)
 		";
 
-		$reset_password_table_query = 
+		$reset_password_table_query =
 		"
-			CREATE TABLE IF NOT EXISTS PasswordResets
+			CREATE TABLE IF NOT EXISTS passwordresets
 			(
 				UserId INT NOT NULL,
 				Token VARCHAR(255) NOT NULL PRIMARY KEY,
 				Expires TIMESTAMP,
-				FOREIGN KEY (UserId) REFERENCES Users(Id) 
+				FOREIGN KEY (UserId) REFERENCES Users(Id)
 			)
 		";
 
-		$movie_table_query = 
+		$movie_table_query =
 			"
-				CREATE TABLE IF NOT EXISTS Movies 
+				CREATE TABLE IF NOT EXISTS movies
 				(
 				Id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 				Title VARCHAR(50) NOT NULL,
@@ -263,7 +263,7 @@ class Sql
 
 		$user_movie_query =
 			"
-				CREATE TABLE IF NOT EXISTS UserMovie
+				CREATE TABLE IF NOT EXISTS usermovie
 				(
 				MovieId INT NOT NULL,
 				UserId INT NOT NULL,
@@ -277,7 +277,7 @@ class Sql
 
 		$post_table_query =
 			"
-				CREATE TABLE IF NOT EXISTS Posts
+				CREATE TABLE IF NOT EXISTS posts
 				(
 				Id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 				MovieId INT NOT NULL,

@@ -1,7 +1,7 @@
 <?php
 class User extends Model
 {
-	public 
+	public
 	$Id,
 	$FirstName,
 	$LastName,
@@ -33,7 +33,7 @@ class User extends Model
 	public static function withToken($token)
 	{
 		$instance = new self();
-		$query = "SELECT * FROM users LEFT JOIN passwordResets ON users.Id = passwordResets.UserId";
+		$query = "SELECT * FROM users LEFT JOIN passwordresets ON users.Id = passwordResets.UserId";
 
 		$res = $instance->core->sql->custom_query($query);
 
@@ -57,6 +57,6 @@ class User extends Model
 			$this->Password = "{$row['Password']}";
 			$this->IsAdmin = ("{$row['IsAdmin']}")  ? true : false;
 		}
-		
+
 	}
 }

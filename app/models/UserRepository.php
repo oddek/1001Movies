@@ -11,7 +11,7 @@ class UserRepository extends Model
 		while ($row = $res->fetch_assoc())
 		{
 			$user = User::withRow($row);
-			array_push($this->users, $user);	
+			array_push($this->users, $user);
 		}
 	}
 
@@ -22,7 +22,7 @@ class UserRepository extends Model
 
 	public function load_all_users()
 	{
-		$this->users = $this->db->select_all('Users');
+		$this->users = $this->db->select_all('users');
 	}
 
 	public function load_users_where($column, $data)

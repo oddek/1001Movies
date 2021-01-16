@@ -21,10 +21,10 @@ class Post extends Model
 		$instance = new self();
 		$instance->fill($row);
 
-		$query = 
+		$query =
 		"
 		SELECT PersonalRating
-		FROM UserMovie
+		FROM usermovie
 		WHERE MovieId = $instance->movieId
 		AND UserId = $instance->userId
 		";

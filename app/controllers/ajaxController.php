@@ -1,11 +1,11 @@
-<?php 
+<?php
 //Class for handling all the AJAX-calls.
 class ajaxController extends Controller
 {
   //Toggles wether a user has seen a movie or not
 	public function post_toggleSeen($id='', $name='')
 	{
-		if (isset($_POST['id']) && isset($_POST['status'])) 
+		if (isset($_POST['id']) && isset($_POST['status']))
 		{
     		$movieId = $_POST['id'];
   			$seen = filter_var ($_POST['status'], FILTER_VALIDATE_BOOLEAN);
@@ -43,7 +43,7 @@ class ajaxController extends Controller
       $this->core->sql->add_post($movieId, $content);
       $userId = $_SESSION['UID'];
       $user = User::withId($userId);
-      $query = "SELECT * FROM Posts WHERE MovieId = '$movieId' AND UserId = '$userId' AND Content = '$content'";
+      $query = "SELECT * FROM posts WHERE MovieId = '$movieId' AND UserId = '$userId' AND Content = '$content'";
 
       $res = $this->core->sql->custom_query($query);
 
@@ -76,7 +76,7 @@ class ajaxController extends Controller
                         '. (($user->Id == $_SESSION['UID']) ? '<a class="float-right btn text-white btn-danger deleteButton" name="'.$post->id.'">Delete</a>' : '') . '
                        </p>
                     </div>
-                </div>            
+                </div>
             </div>
             </li>';
 
@@ -84,7 +84,7 @@ class ajaxController extends Controller
     }
 
   }
-  
+
   //DeletePost
   public function post_deleteComment($id='', $name='')
   {

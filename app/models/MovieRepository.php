@@ -8,11 +8,11 @@ class MovieRepository extends Model
 	{
 		parent::__construct();
 		$user = User::withId($_SESSION['UID']);
-		$query = 
+		$query =
 		"
 		SELECT *
-		FROM Movies mov
-		LEFT JOIN UserMovie usrmov ON mov.Id = usrmov.MovieId
+		FROM movies mov
+		LEFT JOIN usermovie usrmov ON mov.Id = usrmov.MovieId
 		AND usrmov.UserId = $user->Id
 		ORDER BY mov.Year ASC
 		";

@@ -1,7 +1,7 @@
 <?php
 class Movie extends Model
 {
-	public 
+	public
 	$id,
 	$title,
 	$year,
@@ -23,7 +23,7 @@ class Movie extends Model
 	$viewsInPercent;
 
 	public $posts = array();
-	
+
 	public function __construct()
 	{
 		parent::__construct();
@@ -40,11 +40,11 @@ class Movie extends Model
 	{
 		$instance = new self();
 		$userId = $_SESSION['UID'];
-		$query = 
+		$query =
 		"
 		SELECT *
-		FROM Movies mov
-		LEFT JOIN UserMovie usrmov ON mov.Id = usrmov.MovieId
+		FROM movies mov
+		LEFT JOIN usermovie usrmov ON mov.Id = usrmov.MovieId
 		AND usrmov.UserId = $userId
 		WHERE mov.Id = '$id'
 		";
@@ -85,7 +85,7 @@ class Movie extends Model
 	public function fill($row)
 	{
 		if($row)
-		{	
+		{
 			$this->id = "{$row['Id']}";
 			$this->title = "{$row['Title']}";
 			$this->year = "{$row['Year']}";
@@ -117,39 +117,39 @@ class Movie extends Model
 			{
 				$this->yearTag = "year" . substr($this->year, 2, 1);
 			}
-			/*else if ($this->year < 1940) 
+			/*else if ($this->year < 1940)
 			{
 				$this->yearTag = "year3";
 			}
-			else if ($this->year < 1950) 
+			else if ($this->year < 1950)
 			{
 				$this->yearTag = "year4";
 			}
-			else if ($this->year < 1960) 
+			else if ($this->year < 1960)
 			{
 				$this->yearTag = "year5";
 			}
-			else if ($this->year < 1970) 
+			else if ($this->year < 1970)
 			{
 				$this->yearTag = "year6";
 			}
-			else if ($this->year < 1980) 
+			else if ($this->year < 1980)
 			{
 				$this->yearTag = "year7";
 			}
-			else if ($this->year < 1990) 
+			else if ($this->year < 1990)
 			{
 				$this->yearTag = "year8";
 			}
-			else if ($this->year < 2000) 
+			else if ($this->year < 2000)
 			{
 				$this->yearTag = "year9";
 			}
-			else if ($this->year < 2010) 
+			else if ($this->year < 2010)
 			{
 				$this->yearTag = "year10";
 			}
-			else 
+			else
 			{
 				$this->yearTag = "year11";
 			}*/
@@ -157,4 +157,4 @@ class Movie extends Model
 
 		}
 	}
-}  
+}
