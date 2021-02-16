@@ -1,3 +1,3 @@
 # 1001Movies
 A web application for tracking your progress through the book 1001 movies you must see before you die
-http://1001movies.ml
+http://1001movies.me
